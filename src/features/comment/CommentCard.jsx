@@ -10,14 +10,12 @@ import {
   Typography
 } from "@mui/material";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { fDate } from "../../utils/formatTime";
 import CommentForm from "./CommentForm";
 import CommentReaction from "./CommentReaction";
 
 function CommentCard({ comment, onDelete, postId }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const dispatch = useDispatch();
   const [isEdit, setIsEdit] = useState(false);
   const isMenuOpen = Boolean(anchorEl);
 
