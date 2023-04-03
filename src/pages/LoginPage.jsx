@@ -1,33 +1,31 @@
-import React, { useState } from "react";
-import {
-  Link,
-  Stack,
-  Alert,
-  IconButton,
-  InputAdornment,
-  Container,
-} from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { yupResolver } from "@hookform/resolvers/yup";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-
-import { useNavigate, useLocation, Link as RouterLink } from "react-router-dom";
-
-import { FCheckbox, FormProvider, FTextField } from "../components/form";
-import useAuth from "../hooks/useAuth";
+import { LoadingButton } from "@mui/lab";
+import {
+  Alert,
+  Container,
+  IconButton,
+  InputAdornment,
+  Link,
+  Stack
+} from "@mui/material";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { FCheckbox, FTextField, FormProvider } from "../components/form";
+import useAuth from "../hooks/useAuth";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
-  password: Yup.string().required("Password is required"),
+  password: Yup.string().required("Password is required")
 });
 
 const defaultValues = {
   email: "",
   password: "",
-  remember: true,
+  remember: true
 };
 
 function LoginPage() {
@@ -38,13 +36,13 @@ function LoginPage() {
 
   const methods = useForm({
     resolver: yupResolver(LoginSchema),
-    defaultValues,
+    defaultValues
   });
   const {
     handleSubmit,
     reset,
     setError,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting }
   } = methods;
 
   const onSubmit = async (data) => {
@@ -91,7 +89,7 @@ function LoginPage() {
                     {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
                   </IconButton>
                 </InputAdornment>
-              ),
+              )
             }}
           />
         </Stack>
