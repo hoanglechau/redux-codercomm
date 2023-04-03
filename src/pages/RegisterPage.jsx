@@ -1,23 +1,21 @@
-import React, { useState } from "react";
-import {
-  Link,
-  Stack,
-  Alert,
-  IconButton,
-  InputAdornment,
-  Container,
-} from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { yupResolver } from "@hookform/resolvers/yup";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-
-import { useNavigate, Link as RouterLink } from "react-router-dom";
-
-import useAuth from "../hooks/useAuth";
-import { FormProvider, FTextField } from "../components/form";
+import { LoadingButton } from "@mui/lab";
+import {
+  Alert,
+  Container,
+  IconButton,
+  InputAdornment,
+  Link,
+  Stack
+} from "@mui/material";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { FTextField, FormProvider } from "../components/form";
+import useAuth from "../hooks/useAuth";
 
 const RegisterSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -25,14 +23,14 @@ const RegisterSchema = Yup.object().shape({
   password: Yup.string().required("Password is required"),
   passwordConfirmation: Yup.string()
     .required("Please confirm your password")
-    .oneOf([Yup.ref("password")], "Passwords must match"),
+    .oneOf([Yup.ref("password")], "Passwords must match")
 });
 
 const defaultValues = {
   name: "",
   email: "",
   password: "",
-  passwordConfirmation: "",
+  passwordConfirmation: ""
 };
 
 function RegisterPage() {
@@ -44,13 +42,13 @@ function RegisterPage() {
 
   const methods = useForm({
     resolver: yupResolver(RegisterSchema),
-    defaultValues,
+    defaultValues
   });
   const {
     handleSubmit,
     reset,
     setError,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting }
   } = methods;
 
   const onSubmit = async (data) => {
@@ -95,7 +93,7 @@ function RegisterPage() {
                     {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
                   </IconButton>
                 </InputAdornment>
-              ),
+              )
             }}
           />
           <FTextField
@@ -118,7 +116,7 @@ function RegisterPage() {
                     )}
                   </IconButton>
                 </InputAdornment>
-              ),
+              )
             }}
           />
 
