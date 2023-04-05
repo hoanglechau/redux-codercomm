@@ -1,9 +1,9 @@
-import React from "react";
-import isString from "lodash/isString";
-import { useDropzone } from "react-dropzone";
-import { Typography, Box } from "@mui/material";
 import AddAPhotoRoundedIcon from "@mui/icons-material/AddAPhotoRounded";
-import { styled, alpha } from "@mui/material/styles";
+import { Box, Typography } from "@mui/material";
+import { alpha, styled } from "@mui/material/styles";
+import isString from "lodash/isString";
+import React from "react";
+import { useDropzone } from "react-dropzone";
 import RejectionFiles from "./RejectionFiles";
 
 const RootStyle = styled("div")(({ theme }) => ({
@@ -12,7 +12,7 @@ const RootStyle = styled("div")(({ theme }) => ({
   margin: "auto",
   borderRadius: "50%",
   padding: theme.spacing(1),
-  border: `1px dashed ${alpha("#919EAB", 0.32)}`,
+  border: `1px dashed ${alpha("#919EAB", 0.32)}`
 }));
 
 const DropZoneStyle = styled("div")({
@@ -30,9 +30,9 @@ const DropZoneStyle = styled("div")({
   "&:hover": {
     cursor: "pointer",
     "& .placeholder": {
-      zIndex: 9,
-    },
-  },
+      zIndex: 9
+    }
+  }
 });
 
 const PlaceholderStyle = styled("div")(({ theme }) => ({
@@ -45,9 +45,9 @@ const PlaceholderStyle = styled("div")(({ theme }) => ({
   backgroundColor: "#919EAB",
   transition: theme.transitions.create("opacity", {
     easing: theme.transitions.easing.easeInOut,
-    duration: theme.transitions.duration.shorter,
+    duration: theme.transitions.duration.shorter
   }),
-  "&:hover": { opacity: 0.72 },
+  "&:hover": { opacity: 0.72 }
 }));
 
 function UploadAvatar({ error, file, helperText, sx, ...other }) {
@@ -56,10 +56,10 @@ function UploadAvatar({ error, file, helperText, sx, ...other }) {
     getInputProps,
     isDragActive,
     isDragReject,
-    fileRejections,
+    fileRejections
   } = useDropzone({
     multiple: false,
-    ...other,
+    ...other
   });
 
   return (
@@ -67,15 +67,15 @@ function UploadAvatar({ error, file, helperText, sx, ...other }) {
       <RootStyle
         sx={{
           ...((isDragReject || error) && {
-            borderColor: "error.light",
+            borderColor: "error.light"
           }),
-          ...sx,
+          ...sx
         }}
       >
         <DropZoneStyle
           {...getRootProps()}
           sx={{
-            ...(isDragActive && { opacity: 0.72 }),
+            ...(isDragActive && { opacity: 0.72 })
           }}
         >
           <input {...getInputProps()} />
@@ -85,7 +85,7 @@ function UploadAvatar({ error, file, helperText, sx, ...other }) {
               sx={{
                 zIndex: 8,
                 overflow: "hidden",
-                "& img": { objectFit: "cover", width: 1, height: 1 },
+                "& img": { objectFit: "cover", width: 1, height: 1 }
               }}
             >
               <img alt="avatar" src={isString(file) ? file : file.preview} />
@@ -99,11 +99,11 @@ function UploadAvatar({ error, file, helperText, sx, ...other }) {
                 opacity: 0,
                 color: "common.white",
                 bgcolor: "grey.900",
-                "&:hover": { opacity: 0.72 },
+                "&:hover": { opacity: 0.72 }
               }),
               ...((isDragReject || error) && {
-                bgcolor: "error.lighter",
-              }),
+                bgcolor: "error.lighter"
+              })
             }}
           >
             <AddAPhotoRoundedIcon sx={{ width: 24, height: 24, mb: 1 }} />
