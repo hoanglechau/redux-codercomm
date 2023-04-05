@@ -1,5 +1,5 @@
-import { useFormContext, Controller } from "react-hook-form";
-import { Switch, FormControlLabel } from "@mui/material";
+import { FormControlLabel, Switch } from "@mui/material";
+import { Controller, useFormContext } from "react-hook-form";
 
 function FSwitch({ name, ...other }) {
   const { control } = useFormContext();
