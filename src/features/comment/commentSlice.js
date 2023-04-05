@@ -41,7 +41,7 @@ const slice = createSlice({
       state.currentPageByPost[postId] = page;
     },
 
-    createCommentSuccess(state, action) {
+    createCommentSuccess(state) {
       state.isLoading = false;
       state.error = null;
     },
@@ -58,7 +58,7 @@ const slice = createSlice({
       const { commentId, postId } = action.payload;
       delete state.commentsById[commentId];
       const comment = state.commentsByPost[postId].filter(
-        (comment) => comment !== commentId
+        (id) => id !== commentId
       );
       state.commentsByPost = { ...state.commentsByPost, [postId]: comment };
       state.totalCommentsByPost[postId] -= 1;
@@ -67,7 +67,7 @@ const slice = createSlice({
       }
     },
 
-    removeCommentNotSuccess(state, action) {
+    removeCommentNotSuccess(state) {
       state.isLoading = false;
       state.error = null;
     },
@@ -76,7 +76,7 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = null;
       const newComment = action.payload;
-      let author = state.commentsById[newComment._id].author;
+      const author = state.commentsById[newComment._id].author;
       state.commentsById[newComment._id] = newComment;
       state.commentsById[newComment._id].author = author;
     }
@@ -91,8 +91,8 @@ export const getComments =
     dispatch(slice.actions.startLoading());
     try {
       const params = {
-        page: page,
-        limit: limit
+        page,
+        limit
       };
       const response = await apiService.get(`/posts/${postId}/comments`, {
         params
@@ -154,7 +154,7 @@ export const deleteComment =
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      let text = "Do you want to delete it?";
+      const text = "Do you want to delete it?";
       if (window.confirm(text) === true) {
         dispatch(slice.actions.removeCommentSuccess({ commentId, postId }));
         toast.success("Delete comment successfully");
@@ -168,11 +168,11 @@ export const deleteComment =
   };
 
 export const updateComment =
-  ({ content, commentID, postId }) =>
+  ({ content, commentID }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      let data = { content };
+      const data = { content };
       const response = await apiService.put(`/comments/${commentID}`, data);
       toast.success("Update comment successfully");
       dispatch(slice.actions.updateCommentSuccess(response.data));
