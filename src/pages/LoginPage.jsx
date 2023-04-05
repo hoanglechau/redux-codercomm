@@ -14,7 +14,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { FCheckbox, FTextField, FormProvider } from "../components/form";
+import { FCheckbox, FormProvider, FTextField } from "../components/form";
 import useAuth from "../hooks/useAuth";
 
 const LoginSchema = Yup.object().shape({
@@ -47,7 +47,7 @@ function LoginPage() {
 
   const onSubmit = async (data) => {
     const from = location.state?.from?.pathname || "/";
-    let { email, password } = data;
+    const { email, password } = data;
 
     try {
       await auth.login({ email, password }, () => {
