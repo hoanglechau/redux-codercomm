@@ -9,8 +9,8 @@ import {
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SearchInput from "../../components/SearchInput";
-import UserTable from "./UserTable";
 import { getUsers } from "./friendSlice";
+import UserTable from "./UserTable";
 
 function AddFriend() {
   const [filterName, setFilterName] = useState("");
