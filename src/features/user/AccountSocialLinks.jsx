@@ -7,7 +7,7 @@ import { Card, InputAdornment, Stack } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { FTextField, FormProvider } from "../../components/form";
+import { FormProvider, FTextField } from "../../components/form";
 import useAuth from "../../hooks/useAuth";
 import { updateUserProfile } from "./userSlice";
 
