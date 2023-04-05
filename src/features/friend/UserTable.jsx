@@ -21,7 +21,7 @@ function UserTable({ users }) {
 
   const getActionsAndStatus = (targetUser) => {
     const props = {
-      currentUserId: currentUserId,
+      currentUserId,
       targetUserId: targetUser._id,
       friendship: targetUser.friendship
     };
