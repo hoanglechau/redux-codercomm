@@ -12,7 +12,9 @@ import {
 function ActionButton({ currentUserId, targetUserId, friendship, sx }) {
   const dispatch = useDispatch();
 
-  if (currentUserId === targetUserId) return null;
+  if (currentUserId === targetUserId) {
+    return null;
+  }
 
   const btnSendRequest = (
     <Button
@@ -25,7 +27,9 @@ function ActionButton({ currentUserId, targetUserId, friendship, sx }) {
     </Button>
   );
 
-  if (!friendship) return btnSendRequest;
+  if (!friendship) {
+    return btnSendRequest;
+  }
 
   const btnUnfriend = (
     <Button
@@ -93,7 +97,8 @@ function ActionButton({ currentUserId, targetUserId, friendship, sx }) {
     const { from, to } = friendship;
     if (from === currentUserId && to === targetUserId) {
       return btnCancelRequest;
-    } else if (from === targetUserId && to === currentUserId) {
+    }
+    if (from === targetUserId && to === currentUserId) {
       return btnGroupReact;
     }
   }
