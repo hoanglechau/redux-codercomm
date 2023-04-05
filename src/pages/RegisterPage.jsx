@@ -14,7 +14,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { FTextField, FormProvider } from "../components/form";
+import { FormProvider, FTextField } from "../components/form";
 import useAuth from "../hooks/useAuth";
 
 const RegisterSchema = Yup.object().shape({
