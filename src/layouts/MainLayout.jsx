@@ -1,8 +1,8 @@
-import { Outlet } from "react-router-dom";
 import { Box, Stack } from "@mui/material";
+import { Outlet } from "react-router-dom";
+import AlertMsg from "../components/AlertMsg";
 import MainFooter from "./MainFooter";
 import MainHeader from "./MainHeader";
-import AlertMsg from "../components/AlertMsg";
 
 function MainLayout() {
   return (
