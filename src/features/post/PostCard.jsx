@@ -22,34 +22,33 @@ import PostReaction from "./PostReaction";
 import { deletePost } from "./postSlice";
 
 function PostCard({ post, userId }) {
-  const [anchorElement, setAnchorElement] = React.useState(null);
-  const [isEdit, setIsEdit] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const dispatch = useDispatch();
-  const isMenuOpen = Boolean(anchorElement);
+  const [isEdit, setIsEdit] = useState(false);
+
+  const isMenuOpen = Boolean(anchorEl);
 
   const handleProfileMenuOpen = (event) => {
-    setAnchorElement(event.currentTarget);
+    setAnchorEl(event.currentTarget);
   };
 
   const handleMenuClose = () => {
-    setAnchorElement(null);
+    setAnchorEl(null);
   };
-
   const handleDelete = () => {
-    setAnchorElement(null);
+    setAnchorEl(null);
 
     dispatch(deletePost({ postId: post._id, userId }));
   };
-
   const handleEdit = () => {
-    setAnchorElement(null);
+    setAnchorEl(null);
     setIsEdit(true);
   };
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
-      anchorEl={setAnchorElement}
+      anchorEl={anchorEl}
       anchorOrigin={{
         vertical: "bottom",
         horizontal: "right"
@@ -66,6 +65,7 @@ function PostCard({ post, userId }) {
       <MenuItem onClick={handleEdit} sx={{ mx: 1 }}>
         Edit
       </MenuItem>
+
       <MenuItem onClick={handleDelete} sx={{ mx: 1 }}>
         Delete
       </MenuItem>
@@ -107,6 +107,7 @@ function PostCard({ post, userId }) {
           </Box>
         }
       />
+
       <Stack spacing={2} sx={{ p: 3 }}>
         {isEdit === true && (
           <PostForm
@@ -117,6 +118,7 @@ function PostCard({ post, userId }) {
           />
         )}
         {isEdit === false && <Typography>{post.content}</Typography>}
+
         {post.image && (
           <Box
             sx={{
@@ -129,6 +131,7 @@ function PostCard({ post, userId }) {
             <img src={post.image} alt="post" />
           </Box>
         )}
+
         <PostReaction post={post} userId={userId} />
         <CommentList postId={post._id} />
         <CommentForm postId={post._id} />
