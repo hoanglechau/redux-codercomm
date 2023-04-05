@@ -110,7 +110,9 @@ export const getUsers =
     dispatch(slice.actions.startLoading());
     try {
       const params = { page, limit };
-      if (filterName) params.name = filterName;
+      if (filterName) {
+        params.name = filterName;
+      }
       const response = await apiService.get("/users", { params });
       dispatch(slice.actions.getUsersSuccess(response.data));
     } catch (error) {
@@ -125,7 +127,9 @@ export const getFriends =
     dispatch(slice.actions.startLoading());
     try {
       const params = { page, limit };
-      if (filterName) params.name = filterName;
+      if (filterName) {
+        params.name = filterName;
+      }
       const response = await apiService.get("/friends", { params });
       dispatch(slice.actions.getFriendsSuccess(response.data));
     } catch (error) {
@@ -140,7 +144,9 @@ export const getFriendRequests =
     dispatch(slice.actions.startLoading());
     try {
       const params = { page, limit };
-      if (filterName) params.name = filterName;
+      if (filterName) {
+        params.name = filterName;
+      }
       const response = await apiService.get("/friends/requests/incoming", {
         params
       });
@@ -219,7 +225,6 @@ export const removeFriend = (targetUserId) => async (dispatch) => {
   dispatch(slice.actions.startLoading());
   try {
     const response = await apiService.delete(`/friends/${targetUserId}`);
-    console.log("delete friend", response);
     dispatch(
       slice.actions.removeFriendSuccess({ ...response.data, targetUserId })
     );
@@ -236,7 +241,9 @@ export const getSentRequests =
     dispatch(slice.actions.startLoading());
     try {
       const params = { page, limit };
-      if (filterName) params.name = filterName;
+      if (filterName) {
+        params.name = filterName;
+      }
       const response = await apiService.get("/friends/requests/outgoing", {
         params
       });
