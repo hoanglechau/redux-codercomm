@@ -34,7 +34,6 @@ function CommentForm({ postId, commentID, setIsEdit, isEdit }) {
       dispatch(updateComment({ content, commentID, postId }));
       setContent("");
       setIsEdit(false);
-      return;
     }
   };
   return (
