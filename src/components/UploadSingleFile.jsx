@@ -1,10 +1,10 @@
-import isString from "lodash/isString";
-import { useDropzone } from "react-dropzone";
+import AddAPhotoRoundedIcon from "@mui/icons-material/AddAPhotoRounded";
+import { Box, Stack, Typography } from "@mui/material";
 
 import { styled } from "@mui/material/styles";
-import { Box, Stack, Typography } from "@mui/material";
+import isString from "lodash/isString";
+import { useDropzone } from "react-dropzone";
 import RejectionFiles from "./RejectionFiles";
-import AddAPhotoRoundedIcon from "@mui/icons-material/AddAPhotoRounded";
 
 const DropZoneStyle = styled("div")(({ theme }) => ({
   outline: "none",
@@ -16,7 +16,7 @@ const DropZoneStyle = styled("div")(({ theme }) => ({
   transition: theme.transitions.create("padding"),
   backgroundColor: "#F4F6F8",
   border: `1px dashed alpha('#919EAB', 0.32)`,
-  "&:hover": { opacity: 0.72, cursor: "pointer" },
+  "&:hover": { opacity: 0.72, cursor: "pointer" }
 }));
 
 function UploadSingleFile({ error = false, file, helperText, sx, ...other }) {
@@ -25,10 +25,10 @@ function UploadSingleFile({ error = false, file, helperText, sx, ...other }) {
     getInputProps,
     isDragActive,
     isDragReject,
-    fileRejections,
+    fileRejections
   } = useDropzone({
     multiple: false,
-    ...other,
+    ...other
   });
 
   return (
@@ -40,11 +40,11 @@ function UploadSingleFile({ error = false, file, helperText, sx, ...other }) {
           ...((isDragReject || error) && {
             color: "error.main",
             borderColor: "error.light",
-            bgcolor: "error.lighter",
+            bgcolor: "error.lighter"
           }),
           ...(file && {
-            padding: "5% 0",
-          }),
+            padding: "5% 0"
+          })
         }}
       >
         <input {...getInputProps()} />
@@ -77,7 +77,7 @@ function UploadSingleFile({ error = false, file, helperText, sx, ...other }) {
               width: "calc(100% - 16px)",
               height: "calc(100% - 16px)",
               overflow: "hidden",
-              "& img": { objectFit: "cover", width: 1, height: 1 },
+              "& img": { objectFit: "cover", width: 1, height: 1 }
             }}
           >
             <img
