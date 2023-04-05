@@ -1,6 +1,6 @@
-import { Box, Typography, Paper } from "@mui/material";
-import { fData } from "../utils/numberFormat";
+import { Box, Paper, Typography } from "@mui/material";
 import { alpha } from "@mui/material/styles";
+import { fData } from "../utils/numberFormat";
 
 function RejectionFiles({ fileRejections }) {
   return (
@@ -11,7 +11,7 @@ function RejectionFiles({ fileRejections }) {
         px: 2,
         mt: 3,
         borderColor: "error.light",
-        bgcolor: (theme) => alpha(theme.palette.error.main, 0.08),
+        bgcolor: (theme) => alpha(theme.palette.error.main, 0.08)
       }}
     >
       {fileRejections.map(({ file, errors }) => {
