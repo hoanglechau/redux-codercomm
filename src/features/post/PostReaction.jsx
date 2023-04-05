@@ -5,7 +5,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { sendPostReaction } from "./postSlice";
 
-function PostReaction({ post, userId }) {
+function PostReaction({ post }) {
   const dispatch = useDispatch();
 
   const handleClick = (emoji) => {
