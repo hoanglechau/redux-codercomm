@@ -41,7 +41,7 @@ function PostForm({ post, isEdit, setIsEdit }) {
 
   const onSubmit = (data) => {
     if (isEdit) {
-      let { content, image } = data;
+      const { content, image } = data;
       dispatch(updatePost({ postId: post._id, content, image }));
       setIsEdit(false);
     } else {
