@@ -58,7 +58,6 @@ export const updateUserProfile =
     twitterLink
   }) =>
   async (dispatch) => {
-    console.log("2");
     dispatch(slice.actions.startLoading());
     try {
       const data = {
