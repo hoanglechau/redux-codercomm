@@ -6,8 +6,12 @@ import { Chip } from "@mui/material";
 import React from "react";
 
 function FriendStatus({ currentUserId, targetUserId, friendship, sx }) {
-  if (currentUserId === targetUserId) return null;
-  if (!friendship) return null;
+  if (currentUserId === targetUserId) {
+    return null;
+  }
+  if (!friendship) {
+    return null;
+  }
 
   if (friendship.status === "accepted") {
     return (
@@ -42,7 +46,8 @@ function FriendStatus({ currentUserId, targetUserId, friendship, sx }) {
           color="warning"
         />
       );
-    } else if (from === targetUserId && to === currentUserId) {
+    }
+    if (from === targetUserId && to === currentUserId) {
       return (
         <Chip
           sx={{ ...sx }}
