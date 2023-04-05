@@ -1,5 +1,5 @@
-import { useFormContext, Controller } from "react-hook-form";
-import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
+import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
+import { Controller, useFormContext } from "react-hook-form";
 
 function FMultiCheckbox({ name, options, ...other }) {
   const { control } = useFormContext();
