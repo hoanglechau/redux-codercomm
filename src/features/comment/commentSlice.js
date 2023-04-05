@@ -156,7 +156,7 @@ export const deleteComment =
     try {
       const text = "Do you want to delete it?";
       if (window.confirm(text) === true) {
-        const response = await apiService.delete(`/comments/${commentId}`);
+        await apiService.delete(`/comments/${commentId}`);
         dispatch(slice.actions.removeCommentSuccess({ commentId, postId }));
         toast.success("Delete comment successfully");
       } else {
