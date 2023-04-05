@@ -10,8 +10,8 @@ import {
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SearchInput from "../../components/SearchInput";
-import UserCard from "./UserCard";
 import { getSentRequests } from "./friendSlice";
+import UserCard from "./UserCard";
 
 function SentRequests() {
   const [filterName, setFilterName] = useState("");
