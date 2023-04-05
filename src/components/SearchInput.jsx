@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import SearchIcon from "@mui/icons-material/Search";
 
 import { IconButton, InputAdornment, TextField } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import React, { useState } from "react";
 
 function SearchInput({ handleSubmit }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -30,7 +30,7 @@ function SearchInput({ handleSubmit }) {
                 <SearchIcon />
               </IconButton>
             </InputAdornment>
-          ),
+          )
         }}
       />
     </form>
