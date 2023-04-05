@@ -32,7 +32,6 @@ function CommentCard({ comment, onDelete, postId }) {
   };
 
   const handleEdit = () => {
-    console.log("edit commnet", comment);
     setIsEdit(true);
     setAnchorEl(null);
   };
