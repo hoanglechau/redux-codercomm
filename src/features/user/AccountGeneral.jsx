@@ -5,7 +5,7 @@ import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
-import { FTextField, FUploadAvatar, FormProvider } from "../../components/form";
+import { FormProvider, FTextField, FUploadAvatar } from "../../components/form";
 import useAuth from "../../hooks/useAuth";
 import { fData } from "../../utils/numberFormat";
 import { updateUserProfile } from "./userSlice";
@@ -61,7 +61,6 @@ function AccountGeneral() {
   );
 
   const onSubmit = (data) => {
-    console.log("1");
     dispatch(updateUserProfile({ userId: user._id, ...data }));
   };
 
