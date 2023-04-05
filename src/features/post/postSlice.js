@@ -25,7 +25,7 @@ const slice = createSlice({
       state.error = action.payload;
     },
 
-    resetPosts(state, action) {
+    resetPosts(state) {
       state.postsById = {};
       state.currentPagePosts = [];
     },
@@ -37,8 +37,9 @@ const slice = createSlice({
       const { posts, count } = action.payload;
       posts.forEach((post) => {
         state.postsById[post._id] = post;
-        if (!state.currentPagePosts.includes(post._id))
+        if (!state.currentPagePosts.includes(post._id)) {
           state.currentPagePosts.push(post._id);
+        }
       });
       state.totalPosts = count;
     },
@@ -54,7 +55,6 @@ const slice = createSlice({
         state.currentPagePosts.unshift(newPost._id);
       }
       if (state.currentPagePosts.length < POSTS_PER_PAGE) {
-        console.log("object 2 sau xóa 2");
         state.postsById[newPost._id] = newPost;
         state.currentPagePosts.unshift(newPost._id);
       }
@@ -71,7 +71,7 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = null;
       const { postId } = action.payload;
-      const post = state.currentPagePosts.find((post) => post === postId);
+      const post = state.currentPagePosts.find((id) => id === postId);
       const index = state.currentPagePosts.indexOf(post);
       delete state.postsById[postId];
       state.currentPagePosts.splice(index, 1);
@@ -87,7 +87,7 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = null;
       const { postId } = action.payload;
-      const post = state.currentPagePosts.find((post) => post === postId);
+      const post = state.currentPagePosts.find((id) => id === postId);
       const index = state.currentPagePosts.indexOf(post);
       delete state.postsById[postId];
       state.currentPagePosts.splice(index, 1);
@@ -108,7 +108,9 @@ export const getPosts =
         params
       });
 
-      if (page === 1) dispatch(slice.actions.resetPosts());
+      if (page === 1) {
+        dispatch(slice.actions.resetPosts());
+      }
       dispatch(slice.actions.getPostsSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
@@ -163,7 +165,7 @@ export const deletePost =
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      let text = "Are you sure you want to delete this post?";
+      const text = "Are you sure you want to delete this post?";
       if (window.confirm(text) === true) {
         const response = await apiService.delete(`/posts/${postId}`);
         dispatch(slice.actions.removePostSuccess({ ...response.data, postId }));
