@@ -1,5 +1,5 @@
-import { useFormContext, Controller } from "react-hook-form";
 import { FormHelperText } from "@mui/material";
+import { Controller, useFormContext } from "react-hook-form";
 import UploadAvatar from "../UploadAvatar";
 
 function FUploadAvatar({ name, ...other }) {
