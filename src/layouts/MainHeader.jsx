@@ -1,14 +1,14 @@
-import * as React from "react";
+import { Avatar, Box, Divider } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
-import { Box, Avatar, Divider } from "@mui/material";
-import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import * as React from "react";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
 import useAuth from "../hooks/useAuth";
-import { useNavigate, Link as RouterLink } from "react-router-dom";
 
 function MainHeader() {
   const { user, logout } = useAuth();
