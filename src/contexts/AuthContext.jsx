@@ -88,7 +88,6 @@ const reducer = (state, action) => {
 const AuthContext = createContext({ ...initialState });
 
 const setsession = (accessToken) => {
-  console.log("accessToken", accessToken);
   if (accessToken) {
     window.localStorage.setItem("accessToken", accessToken);
     apiService.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
@@ -102,7 +101,6 @@ function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const updatedProfile = useSelector((state) => state.user.updatedProfile);
   useEffect(() => {
-    console.log("useEffect");
     const initialize = async () => {
       try {
         const accessToken = window.localStorage.getItem("accessToken");
@@ -134,18 +132,14 @@ function AuthProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    console.log("5");
     if (updatedProfile) {
-      console.log("6");
       dispatch({ type: UPDATE_PROFILE, payload: updatedProfile });
     }
   }, [updatedProfile]);
 
   const login = async ({ email, password }, callback) => {
     const response = await apiService.post("/auth/login", { email, password });
-    console.log("response in Login", response);
     const { user, accessToken } = response.data;
-    console.log("accessToken in Login", accessToken);
     setsession(accessToken);
     dispatch({
       type: LOGIN_SUCCESS,
